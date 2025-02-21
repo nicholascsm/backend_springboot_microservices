@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package com.niche.microservices.payment_service;
+
+option java_multiple_files = true;
+option java_package = "com.niche.microservices.payment_service.grpc";
+
+service PaymentService {
+  rpc ProcessPayment (PaymentRequest) returns (PaymentResponse);
+}
+
+message PaymentRequest {
+  string order_id = 1;
+  double amount = 2;
+  string payment_method = 3;
+}
+
+message PaymentResponse {
+  string payment_id = 1;
+  string status = 2;
+}
